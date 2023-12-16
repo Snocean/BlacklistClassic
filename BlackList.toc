@@ -1,7 +1,7 @@
-## Interface: 11302
 ## Title: Black List
-## Version: v1.13.2
-## Author: Logan / ElrickEnonimis / chobs / komerad / karl_w_w / rykkan
+## Version: v1.15.0
+## Updated By: EffinOwen
+## Original Author: Logan / ElrickEnonimis / chobs / komerad / karl_w_w / rykkan
 ## Notes: Keeps a list with notes of enemy and friendly players, warning you if in target, mouse over, or group with them.
 ## SavedVariables: BlackListedPlayers
 ## SavedVariablesPerCharacter: BlackListConfig
