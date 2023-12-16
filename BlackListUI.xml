@@ -274,14 +274,12 @@
 		</Scripts>
 	</Frame>
 
-	<Frame name="BlackListDetailsFrame" toplevel="true" parent="UIParent" movable="true" enableMouse="true" hidden="true">
+	<Frame name="BlackListDetailsFrame" parent="UIParent" movable="true" enableMouse="true" hidden="true" inherits="BackdropTemplate">
+		<KeyValues>
+			<KeyValue key="backdropInfo" value="BACKDROP_TUTORIAL_16_16" type="global"/>
+		</KeyValues>
 		<Size><AbsDimension x="297" y="320" /></Size>
 		<Anchors><Anchor point="TOPLEFT" relativeTo="FriendsFrameBlackListScrollFrame" relativePoint="TOPRIGHT"><Offset><AbsDimension x="30" y="10" /></Offset></Anchor></Anchors>
-		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
-			<BackgroundInsets><AbsInset left="11" right="12" top="12" bottom="11" /></BackgroundInsets>
-			<TileSize><AbsValue val="32" /></TileSize>
-			<EdgeSize><AbsValue val="32" /></EdgeSize>
-		</Backdrop>
 		<Layers>
 			<Layer level="OVERLAY">
 				<Texture name="BlackListDetailsCorner" file="Interface\DialogFrame\UI-DialogBox-Corner">
@@ -320,14 +318,13 @@
 			<Button name="BlackListDetailsCloseButton" inherits="UIPanelCloseButton">
 				<Anchors><Anchor point="TOPRIGHT"><Offset><AbsDimension x="-2" y="-3" /></Offset></Anchor></Anchors>
 			</Button>
-			<Frame name="BlackListDetailsFrameReasonTextBackground">
+			
+			<Frame name="BlackListDetailsFrameReasonTextBackground" inherits="BackdropTemplate">
+						<KeyValues>
+							<KeyValue key="backdropInfo" value="BACKDROP_DIALOG_32_32" type="global"/>
+						</KeyValues>
 				<Size><AbsDimension x="266" y="93" /></Size>
 				<Anchors><Anchor point="TOPLEFT" relativeTo="BlackListDetailsReasonLabel" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="-1" y="-4" /></Offset></Anchor></Anchors>
-				<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
-					<EdgeSize><AbsValue val="16" /></EdgeSize>
-					<TileSize><AbsValue val="16" /></TileSize>
-					<BackgroundInsets><AbsInset left="5" right="5" top="5" bottom="5" /></BackgroundInsets>
-				</Backdrop>
 				<Frames>
 					<ScrollFrame name="BlackListDetailsFrameScrollFrame" inherits="UIPanelScrollFrameTemplate">
 						<Size><AbsDimension x="233" y="81" /></Size>
@@ -360,9 +357,7 @@
 					</ScrollFrame>
 				</Frames>
 				<Scripts>
-					<OnLoad>
-						self:SetBackdropBorderColor(TOOLTIP_DEFAULT_COLOR.r, TOOLTIP_DEFAULT_COLOR.g, TOOLTIP_DEFAULT_COLOR.b)
-						self:SetBackdropColor(TOOLTIP_DEFAULT_BACKGROUND_COLOR.r, TOOLTIP_DEFAULT_BACKGROUND_COLOR.g, TOOLTIP_DEFAULT_BACKGROUND_COLOR.b)
+					<OnLoad inherit="prepend">
 					</OnLoad>
 				</Scripts>
 			</Frame>
@@ -386,9 +381,7 @@
 					</EditBox>
 				</Frames>
 				<Scripts>
-					<OnLoad>
-						self:SetBackdropBorderColor(TOOLTIP_DEFAULT_COLOR.r, TOOLTIP_DEFAULT_COLOR.g, TOOLTIP_DEFAULT_COLOR.b)
-						self:SetBackdropColor(TOOLTIP_DEFAULT_BACKGROUND_COLOR.r, TOOLTIP_DEFAULT_BACKGROUND_COLOR.g, TOOLTIP_DEFAULT_BACKGROUND_COLOR.b)
+					<OnLoad inherit="prepend">
 					</OnLoad>
 				</Scripts>
 			</Frame>
@@ -436,9 +429,7 @@
 					</EditBox>
 				</Frames>
 				<Scripts>
-					<OnLoad>
-						self:SetBackdropBorderColor(TOOLTIP_DEFAULT_COLOR.r, TOOLTIP_DEFAULT_COLOR.g, TOOLTIP_DEFAULT_COLOR.b)
-						self:SetBackdropColor(TOOLTIP_DEFAULT_BACKGROUND_COLOR.r, TOOLTIP_DEFAULT_BACKGROUND_COLOR.g, TOOLTIP_DEFAULT_BACKGROUND_COLOR.b)
+					<OnLoad inherit="prepend">
 					</OnLoad>
 				</Scripts>
 			</Frame>
@@ -488,9 +479,7 @@
 					</EditBox>
 				</Frames>
 				<Scripts>
-					<OnLoad>
-						self:SetBackdropBorderColor(TOOLTIP_DEFAULT_COLOR.r, TOOLTIP_DEFAULT_COLOR.g, TOOLTIP_DEFAULT_COLOR.b)
-						self:SetBackdropColor(TOOLTIP_DEFAULT_BACKGROUND_COLOR.r, TOOLTIP_DEFAULT_BACKGROUND_COLOR.g, TOOLTIP_DEFAULT_BACKGROUND_COLOR.b)
+					<OnLoad inherit="prepend">
 					</OnLoad>
 				</Scripts>
 			</Frame>
@@ -539,9 +528,7 @@
 					</EditBox>
 				</Frames>
 				<Scripts>
-					<OnLoad>
-						self:SetBackdropBorderColor(TOOLTIP_DEFAULT_COLOR.r, TOOLTIP_DEFAULT_COLOR.g, TOOLTIP_DEFAULT_COLOR.b)
-						self:SetBackdropColor(TOOLTIP_DEFAULT_BACKGROUND_COLOR.r, TOOLTIP_DEFAULT_BACKGROUND_COLOR.g, TOOLTIP_DEFAULT_BACKGROUND_COLOR.b)
+					<OnLoad inherit="prepend">
 					</OnLoad>
 				</Scripts>
 			</Frame>
