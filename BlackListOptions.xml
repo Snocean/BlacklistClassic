@@ -1,0 +1,108 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	
+	<Script file="BlackListOptions.lua"/>
+	
+	<Frame name="BlackListOptionsFrame" toplevel="true" frameStrata="MEDIUM" movable="true" enableMouse="true" hidden="true" parent="UIParent">
+		<Size><AbsDimension x="350" y="220" /></Size>
+		<Anchors><Anchor point="CENTER" /></Anchors>
+		
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />	
+				<Size><AbsDimension x="128" y="17" /></Size>
+			</BackgroundInsets>
+			<TileSize><AbsValue val="32" /></TileSize>
+			<EdgeSize><AbsValue val="32" /></EdgeSize>
+		</Backdrop>	
+		
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture name="$parentTitle" file="Interface\DialogFrame\UI-DialogBox-Header">
+					<Size><AbsDimension x="306" y="64" /></Size>
+					<Anchors><Anchor point="TOP"><Offset><AbsDimension x="0" y="12" /></Offset></Anchor></Anchors>
+				</Texture>
+				
+				<FontString inherits="GameFontNormal" text="Black List Options">
+					<Anchors><Anchor point="TOP" relativeTo="$parent"><Offset><AbsDimension x="0" y="-3" /></Offset></Anchor></Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		
+		<Frames>
+			<CheckButton name="SoundCheckButton" inherits="OptionsCheckButtonTemplate">
+				<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="20" y="-30" /></Offset></Anchor></Anchors>
+				<Scripts>
+					<OnShow>
+						self:SetChecked(BlackListConfig.Sound)
+						_G[self:GetName().."Text"]:SetText("Play a sound when mouseover")
+					</OnShow>
+					<OnClick>
+						if(self:GetChecked()) then
+							BlackListConfig.Sound = true
+						else
+							BlackListConfig.Sound = false
+						end
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			
+			<CheckButton name="CenterCheckButton" inherits="OptionsCheckButtonTemplate">
+				<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="20" y="-60" /></Offset></Anchor></Anchors>
+				<Scripts>
+					<OnShow>
+						self:SetChecked(BlackListConfig.Center)
+						_G[self:GetName().."Text"]:SetText("Show warning at screen center")
+					</OnShow>
+					<OnClick>
+						if(self:GetChecked()) then
+							BlackListConfig.Center = true
+						else
+							BlackListConfig.Center = false
+						end
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="ChatCheckButton" inherits="OptionsCheckButtonTemplate">
+				<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="20" y="-90" /></Offset></Anchor></Anchors>
+				<Scripts>
+					<OnShow>
+						self:SetChecked(BlackListConfig.Chat)
+						_G[self:GetName().."Text"]:SetText("Show messages in chat")
+					</OnShow>
+					<OnClick>
+						if(self:GetChecked()) then
+							BlackListConfig.Chat = true
+						else
+							BlackListConfig.Chat = false
+						end
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			
+			<CheckButton name="TooltipCheckButton" inherits="OptionsCheckButtonTemplate">
+				<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="20" y="-120" /></Offset></Anchor></Anchors>
+				<Scripts>
+					<OnShow>
+						self:SetChecked(BlackListConfig.Tooltip)
+						_G[self:GetName().."Text"]:SetText("Show Info in Tooltip")
+					</OnShow>
+					<OnClick>
+						if(self:GetChecked()) then
+							BlackListConfig.Tooltip = true
+						else
+							BlackListConfig.Tooltip = false
+						end
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			
+		<Button name="$parentClose" inherits="OptionsButtonTemplate" text="CLOSE">
+				<Anchors><Anchor point="CENTER" relativeTo="$parent" relativePoint="BOTTOM"><Offset><AbsDimension x="0" y="30" /></Offset></Anchor></Anchors>
+				<Scripts>
+					<OnClick>BlackListOptionsFrame:Hide()</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+</Ui>
