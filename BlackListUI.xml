@@ -298,7 +298,7 @@
 					<Anchors><Anchor point="LEFT" relativeTo="BlackListDetailsBlackListedLabel" relativePoint="RIGHT"><Offset><AbsDimension x="2" y="0" /></Offset></Anchor></Anchors>
 				</FontString>
 				<FontString name="BlackListDetailsReasonLabel" inherits="GameFontNormal" text="Listed for:">
-					<Anchors><Anchor point="TOPLEFT" relativeTo="BlackListDetailsBlackListedLabel" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="2" y="-11" /></Offset></Anchor></Anchors>
+					<Anchors><Anchor point="TOPLEFT" relativeTo="BlackListDetailsBlackListedLabel" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="0" y="-11" /></Offset></Anchor></Anchors>
 				</FontString>
 				<FontString name="BlackListDetailsLevelLabel" inherits="GameFontNormal" text="Level">
 					<Anchors><Anchor point="LEFT" relativeTo="BlackListDetailsBlackListedLabel" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="10" y="-135" /></Offset></Anchor></Anchors>
@@ -307,7 +307,7 @@
 					<Anchors><Anchor point="LEFT" relativeTo="BlackListDetailsLevelLabel" relativePoint="LEFT"><Offset><AbsDimension x="130" y="0" /></Offset></Anchor></Anchors>
 				</FontString>
 				<FontString name="BlackListDetailsRaceLabel" inherits="GameFontNormal" text="Race">
-					<Anchors><Anchor point="LEFT" relativeTo="BlackListDetailsLevelLabel" relativePoint="LEFT"><Offset><AbsDimension x="2" y="-50" /></Offset></Anchor></Anchors>
+					<Anchors><Anchor point="LEFT" relativeTo="BlackListDetailsLevelLabel" relativePoint="LEFT"><Offset><AbsDimension x="0" y="-50" /></Offset></Anchor></Anchors>
 				</FontString>
 				<FontString name="BlackListDetailsClassLabel" inherits="GameFontNormal" text="Class">
 					<Anchors><Anchor point="LEFT" relativeTo="BlackListDetailsRealmLabel" relativePoint="LEFT"><Offset><AbsDimension x="0" y="-50" /></Offset></Anchor></Anchors>
@@ -321,14 +321,14 @@
 			
 			<Frame name="BlackListDetailsFrameReasonTextBackground" inherits="BackdropTemplate">
 						<KeyValues>
-							<KeyValue key="backdropInfo" value="BACKDROP_DIALOG_32_32" type="global"/>
+							<KeyValue key="backdropInfo" value="BACKDROP_SLIDER_8_8" type="global"/>
 						</KeyValues>
 				<Size><AbsDimension x="266" y="93" /></Size>
 				<Anchors><Anchor point="TOPLEFT" relativeTo="BlackListDetailsReasonLabel" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="-1" y="-4" /></Offset></Anchor></Anchors>
 				<Frames>
 					<ScrollFrame name="BlackListDetailsFrameScrollFrame" inherits="UIPanelScrollFrameTemplate">
 						<Size><AbsDimension x="233" y="81" /></Size>
-						<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="5" y="-7" /></Offset></Anchor></Anchors>
+						<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="8" y="-7" /></Offset></Anchor></Anchors>
 						<Scripts>
 							<OnMouseDown>BlackListDetailsFrameReasonTextBox:SetFocus()</OnMouseDown>
 							<OnMouseUp>BlackListDetailsFrameReasonTextBox:SetFocus()</OnMouseUp> 
@@ -358,19 +358,15 @@
 					</ScrollFrame>
 				</Frames>
 				<Scripts>
-					<OnLoad inherit="prepend">
-					</OnLoad>
 				</Scripts>
 			</Frame>
 			
-			<Frame name="BlackListEditDetailsFrameLevelBackground">
-				<Size><AbsDimension x="38" y="30" /></Size>
+			<Frame name="BlackListEditDetailsFrameLevelBackground" inherits="BackdropTemplate">
+				<Size><AbsDimension x="110" y="30" /></Size>
+				<KeyValues>
+					<KeyValue key="backdropInfo" value="BACKDROP_SLIDER_8_8" type="global"/>
+				</KeyValues>
 				<Anchors><Anchor point="TOPLEFT" relativeTo="BlackListDetailsLevelLabel" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="-1" y="-4" /></Offset></Anchor></Anchors>
-				<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
-					<EdgeSize><AbsValue val="16" /></EdgeSize>
-					<TileSize><AbsValue val="16" /></TileSize>
-					<BackgroundInsets><AbsInset left="5" right="5" top="5" bottom="5" /></BackgroundInsets>
-				</Backdrop>
 				<Frames>
 					<EditBox name="BlackListEditDetailsFrameLevel"  bytes="3"  autoFocus="false" frameStrata="HIGH" historyLines="32">
 						<Size><AbsDimension x="64" y="32" /></Size>
@@ -383,12 +379,13 @@
 					</EditBox>
 				</Frames>
 				<Scripts>
-					<OnLoad inherit="prepend">
-					</OnLoad>
 				</Scripts>
 			</Frame>
 
-			<Frame name="BlackListEditDetailsFrameRealmBackground">
+			<Frame name="BlackListEditDetailsFrameRealmBackground" inherits="BackdropTemplate">
+				<KeyValues>
+					<KeyValue key="backdropInfo" value="BACKDROP_SLIDER_8_8" type="global"/>
+				</KeyValues>
 				<Size>
 					<AbsDimension x="110" y="30" />
 				</Size>
@@ -399,17 +396,6 @@
 						</Offset>
 					</Anchor>
 				</Anchors>
-				<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
-					<EdgeSize>
-						<AbsValue val="16" />
-					</EdgeSize>
-					<TileSize>
-						<AbsValue val="16" />
-					</TileSize>
-					<BackgroundInsets>
-						<AbsInset left="5" right="5" top="5" bottom="5" />
-					</BackgroundInsets>
-				</Backdrop>
 				<Frames>
 					<EditBox name="BlackListEditDetailsFrameRealm" bytes="50" autoFocus="false" frameStrata="HIGH" historyLines="32">
 						<Size>
@@ -432,14 +418,13 @@
 					</EditBox>
 				</Frames>
 				<Scripts>
-					<OnLoad inherit="prepend">
-					</OnLoad>
 				</Scripts>
 			</Frame>
 
-
-
-			<Frame name="BlackListEditDetailsFrameRaceBackground">
+			<Frame name="BlackListEditDetailsFrameRaceBackground" inherits="BackdropTemplate">
+				<KeyValues>
+					<KeyValue key="backdropInfo" value="BACKDROP_SLIDER_8_8" type="global"/>
+				</KeyValues>
 				<Size>
 					<AbsDimension x="110" y="30" />
 				</Size>
@@ -450,17 +435,6 @@
 						</Offset>
 					</Anchor>
 				</Anchors>
-				<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
-					<EdgeSize>
-						<AbsValue val="16" />
-					</EdgeSize>
-					<TileSize>
-						<AbsValue val="16" />
-					</TileSize>
-					<BackgroundInsets>
-						<AbsInset left="5" right="5" top="5" bottom="5" />
-					</BackgroundInsets>
-				</Backdrop>
 				<Frames>
 					<EditBox name="BlackListEditDetailsFrameRace" bytes="50" autoFocus="false" frameStrata="HIGH" historyLines="32">
 						<Size>
@@ -483,13 +457,14 @@
 					</EditBox>
 				</Frames>
 				<Scripts>
-					<OnLoad inherit="prepend">
-					</OnLoad>
 				</Scripts>
 			</Frame>
 
 					
-						<Frame name="BlackListEditDetailsFrameClassBackground">
+				<Frame name="BlackListEditDetailsFrameClassBackground" inherits="BackdropTemplate">
+					<KeyValues>
+						<KeyValue key="backdropInfo" value="BACKDROP_SLIDER_8_8" type="global"/>
+					</KeyValues>
 				<Size>
 					<AbsDimension x="110" y="30" />
 				</Size>
@@ -500,17 +475,6 @@
 						</Offset>
 					</Anchor>
 				</Anchors>
-				<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
-					<EdgeSize>
-						<AbsValue val="16" />
-					</EdgeSize>
-					<TileSize>
-						<AbsValue val="16" />
-					</TileSize>
-					<BackgroundInsets>
-						<AbsInset left="5" right="5" top="5" bottom="5" />
-					</BackgroundInsets>
-				</Backdrop>
 				<Frames>
 					<EditBox name="BlackListEditDetailsFrameClass" bytes="50" autoFocus="false" frameStrata="HIGH" historyLines="32">
 						<Size>
@@ -533,8 +497,6 @@
 					</EditBox>
 				</Frames>
 				<Scripts>
-					<OnLoad inherit="prepend">
-					</OnLoad>
 				</Scripts>
 			</Frame>
 									
