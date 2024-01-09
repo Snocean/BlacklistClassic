@@ -98,11 +98,11 @@
 	<Frame name="BlackListFrame" parent="FriendsFrame" hidden="true" setAllPoints="true">
 		<Frames>
 			<Button name="FriendsFrameBlacklistPlayerButton" inherits="UIPanelButtonTemplate">
-				<Size><AbsDimension x="110" y="21" /></Size>
+				<Size><AbsDimension x="40" y="21" /></Size>
 				<Anchors><Anchor point="BOTTOMLEFT" relativeTo="FriendsFrame"><Offset><AbsDimension x="4" y="4" /></Offset></Anchor></Anchors>
 				<Scripts>
 					<OnLoad>
-						self:SetText("Add Player")
+						self:SetText("Add")
 						self:SetFrameLevel( self:GetFrameLevel() + 3 )
 					</OnLoad>
 					<OnClick>
@@ -113,11 +113,11 @@
 				</Scripts>
 			</Button>
 			<Button name="FriendsFrameRemovePlayerButton" inherits="UIPanelButtonTemplate">
-				<Size><AbsDimension x="110" y="21" /></Size>
-				<Anchors><Anchor point="BOTTOMLEFT" relativeTo="FriendsFrame"><Offset><AbsDimension x="111" y="4" /></Offset></Anchor></Anchors>
+				<Size><AbsDimension x="60" y="21" /></Size>
+				<Anchors><Anchor point="BOTTOMLEFT" relativeTo="FriendsFrameBlacklistPlayerButton"><Offset><AbsDimension x="42" y="0" /></Offset></Anchor></Anchors>
 				<Scripts>
 					<OnLoad>
-						self:SetText("Remove Player")
+						self:SetText("Remove")
 						self:SetFrameLevel( self:GetFrameLevel() + 3 )
 					</OnLoad>
 					<OnClick>
@@ -127,11 +127,11 @@
 				</Scripts>
 			</Button>
 			<Button name="FriendsFrameOptionsButton" inherits="UIPanelButtonTemplate">
-				<Size><AbsDimension x="75" y="21" /></Size>
+				<Size><AbsDimension x="55" y="21" /></Size>
 				<Anchors>
 				<Anchor point="BOTTOMLEFT" relativeTo="FriendsFrame">
 				<Offset>
-					<AbsDimension x="257" y="4" />
+					<AbsDimension x="254" y="4" />
 					</Offset>
 					</Anchor>
 					</Anchors>
@@ -149,22 +149,56 @@
 					</OnClick>
 				</Scripts>
 			</Button>
-						<Button name="FriendsFrameShareButton" inherits="UIPanelButtonTemplate" text="Share">
-				<Size>
-					<AbsDimension x="35" y="21" />
-				</Size>
-				<Anchors>
-					<Anchor point="BOTTOMLEFT" relativeTo="FriendsFrame">
-						<Offset>
-							<AbsDimension x="220" y="4" />
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						BlackList:ShareAll()
-					</OnClick>
-				</Scripts>
+				<Button name="FriendsFrameShareButton" inherits="UIPanelButtonTemplate" text="Share">
+					<Size>
+						<AbsDimension x="45" y="21" />
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="FriendsFrameRemovePlayerButton">
+							<Offset>
+								<AbsDimension x="62" y="0" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Scripts>
+						<OnClick>
+							BlackList:ShareAll()
+						</OnClick>
+					</Scripts>
+			</Button>
+				<Button name="FriendsFrameExportButton" inherits="UIPanelButtonTemplate" text="Export">
+					<Size>
+						<AbsDimension x="48" y="21" />
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="FriendsFrameShareButton">
+							<Offset>
+								<AbsDimension x="47" y="0" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Scripts>
+						<OnClick>
+							BlackList:ExportBlacklist()
+						</OnClick>
+					</Scripts>
+			</Button>
+				<Button name="FriendsFrameImportButton" inherits="UIPanelButtonTemplate" text="Import">
+					<Size>
+						<AbsDimension x="48" y="21" />
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="FriendsFrameExportButton">
+							<Offset>
+								<AbsDimension x="50" y="0" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Scripts>
+						<OnClick>
+							BlackList:ImportBlacklist(args)
+						</OnClick>
+					</Scripts>
 			</Button>
 			<Button name="FriendsFrameBlackListButton1" inherits="FriendsFrameBlackListButtonTemplate" id="1">
 				<Anchors><Anchor point="TOPLEFT" relativeTo="FriendsFrame"><Offset><AbsDimension x="10" y="-89" /></Offset></Anchor></Anchors>
@@ -281,12 +315,6 @@
 		<Size><AbsDimension x="297" y="320" /></Size>
 		<Anchors><Anchor point="TOPLEFT" relativeTo="FriendsFrameBlackListScrollFrame" relativePoint="TOPRIGHT"><Offset><AbsDimension x="30" y="10" /></Offset></Anchor></Anchors>
 		<Layers>
-			<Layer level="OVERLAY">
-				<Texture name="BlackListDetailsCorner" file="Interface\DialogFrame\UI-DialogBox-Corner">
-					<Size><AbsDimension x="32" y="32" /></Size>
-					<Anchors><Anchor point="TOPRIGHT"><Offset><AbsDimension x="-6" y="-7" /></Offset></Anchor></Anchors>
-				</Texture>
-			</Layer>
 			<Layer level="ARTWORK">
 				<FontString name="BlackListDetailsName" inherits="GameFontNormal" text="">
 					<Anchors><Anchor point="TOPLEFT"><Offset><AbsDimension x="17" y="-18" /></Offset></Anchor></Anchors>
@@ -316,7 +344,7 @@
 		</Layers>
 		<Frames>
 			<Button name="BlackListDetailsCloseButton" inherits="UIPanelCloseButton">
-				<Anchors><Anchor point="TOPRIGHT"><Offset><AbsDimension x="-2" y="-3" /></Offset></Anchor></Anchors>
+				<Anchors><Anchor point="TOPRIGHT"><Offset><AbsDimension x="2" y="2" /></Offset></Anchor></Anchors>
 			</Button>
 			
 			<Frame name="BlackListDetailsFrameReasonTextBackground" inherits="BackdropTemplate">
@@ -339,6 +367,7 @@
 								<Scripts>
 									<OnEscapePressed>self:ClearFocus()</OnEscapePressed>
 									<OnEnterPressed>self:ClearFocus()</OnEnterPressed>
+									<OnTabPressed>BlackListEditDetailsFrameLevel:SetFocus()</OnTabPressed>
 									<OnTextChanged>
 										local scrollBar = _G[self:GetParent():GetName().."ScrollBar"]
 										self:GetParent():UpdateScrollChildRect()
@@ -374,6 +403,7 @@
 						<Scripts>
 							<OnEscapePressed>self:ClearFocus()</OnEscapePressed>
 							<OnEnterPressed>self:ClearFocus()</OnEnterPressed>
+							<OnTabPressed>BlackListEditDetailsFrameRealm:SetFocus()</OnTabPressed>
 						</Scripts>
 						<FontString inherits="ChatFontNormal"/>
 					</EditBox>
@@ -409,10 +439,9 @@
 							</Anchor>
 						</Anchors>
 						<Scripts>
-							<OnEscapePressed>
-								self:ClearFocus()
-							</OnEscapePressed>
+							<OnEscapePressed>self:ClearFocus()</OnEscapePressed>
 							<OnEnterPressed>self:ClearFocus()</OnEnterPressed>
+							<OnTabPressed>BlackListEditDetailsFrameRace:SetFocus()</OnTabPressed>
 						</Scripts>
 						<FontString inherits="ChatFontNormal"  />
 					</EditBox>
@@ -448,10 +477,9 @@
 							</Anchor>
 						</Anchors>
 						<Scripts>
-							<OnEscapePressed>
-								self:ClearFocus()
-							</OnEscapePressed>
+							<OnEscapePressed>self:ClearFocus()</OnEscapePressed>
 							<OnEnterPressed>self:ClearFocus()</OnEnterPressed>
+							<OnTabPressed>BlackListEditDetailsFrameClass:SetFocus()</OnTabPressed>
 						</Scripts>
 						<FontString inherits="ChatFontNormal"  />
 					</EditBox>
@@ -488,10 +516,9 @@
 							</Anchor>
 						</Anchors>
 						<Scripts>
-							<OnEscapePressed>
-								self:ClearFocus()
-							</OnEscapePressed>
-							<OnEnterPressed>self:ClearFocus()</OnEnterPressed>
+							<OnEscapePressed>self:ClearFocus()</OnEscapePressed>
+							<OnTabPressed>BlackListDetailsFrameReasonTextBox:SetFocus()</OnTabPressed>
+							<OnEnterPressed>BlackListEditDetailsSaveButton_OnClick()</OnEnterPressed>
 						</Scripts>
 						<FontString inherits="ChatFontNormal"  />
 					</EditBox>
