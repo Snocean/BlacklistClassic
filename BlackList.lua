@@ -41,6 +41,9 @@ function BlackList:OnLoad()
 	BlackList:RegisterEvents()
 	BlackList:HookFunctions()
 	BlackList:RegisterSlashCmds()
+	BlackList:AddMessage("************", "red")
+	BlackList:AddMessage("Simple Blacklist for Classic loaded! Type /blhelp for more info!", "green")
+	BlackList:AddMessage("************", "red")
 
 
 	return
@@ -120,22 +123,50 @@ hooksecurefunc("FriendsFrame_Update", function(self)
    end
 end)
 
--- Registers slash cmds
+-- Registers slash cmds for adding players to blacklist
 function BlackList:RegisterSlashCmds()
-	SlashCmdList["BlackList"]   = function(args) BlackList:HandleSlashCmd(1, args) end
-	SLASH_BlackList1 = "/blacklist"
-	SLASH_BlackList2 = "/bl"
+    SlashCmdList["BLACKLIST"] = function(args) BlackList:HandleSlashCmd("bl", args) end
+    SLASH_BLACKLIST1 = "/blacklist"
+    SLASH_BLACKLIST2 = "/bl"
+
+    SlashCmdList["BL_EXPORT"] = function(args) BlackList:HandleSlashCmd("export", args) end
+    SLASH_BL_EXPORT1 = "/blexport"
+    SLASH_BL_EXPORT2 = "/blacklistexport"
+
+    SlashCmdList["BL_IMPORT"] = function(args) BlackList:HandleSlashCmd("import", args) end
+    SLASH_BL_IMPORT1 = "/blimport"
+    SLASH_BL_IMPORT2 = "/blacklistimport"
+	
+	SlashCmdList["BL_NUKE"] = function(args) BlackList:HandleSlashCmd("nuke", args) end
+    SLASH_BL_NUKE1 = "/bldatanuke"
+    SLASH_BL_NUKE2 = "/blacklistdatanuke"
+	
+	SlashCmdList["BL_HELP"] = function(args) BlackList:HandleSlashCmd("help", args) end
+    SLASH_BL_HELP1 = "/blhelp"
+    SLASH_BL_HELP2 = "/blacklisthelp"
 end
 
 -- Handles the slash cmds
-function BlackList:HandleSlashCmd(type, args)
-	if (type == 1) then
-		if (args == "") then
-			BlackList:AddPlayer("target")
-		else
-			BlackList:AddPlayer(args)
-		end
-	end
+function BlackList:HandleSlashCmd(cmd, args)
+    if cmd == "blacklist" or cmd == "bl" then
+        if args == "" then
+            BlackList:AddPlayer("target")
+        else
+            BlackList:AddPlayer(args)
+        end
+    elseif cmd == "export" or cmd == "blacklistexport" then
+        -- Handle the export commands as needed
+        BlackList:ExportBlacklist()
+    elseif cmd == "import" or cmd == "blacklistimport" then
+        -- Handle the import commands as needed
+        BlackList:ImportBlacklist(args)
+	elseif cmd == "nuke" or cmd == "blacklistdatanuke" then
+        -- Handle the import commands as needed
+        BlackList:DataNukeConfirmation()
+	elseif cmd == "help" or cmd == "blacklisthelp" then
+        -- Handle the import commands as needed
+        BlackList:PrintHelpInfo()
+    end
 end
 
 function split(inputstr, sep) 
